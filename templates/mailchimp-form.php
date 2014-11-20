@@ -16,7 +16,7 @@ if(is_user_logged_in()) {
 
 <form class="epm-sign-up-form" name="epm-sign-up-form" action="#" method="post">
 
-	<?php if($epm_options['display_name_fields']) : ?>
+	<?php if(epm_get_option('display_name_fields')) : ?>
 
 	<div class="epm-form-field">
 		<label for="epm-first-name"><?php _e('First Name','easy-peasy-mailchimp');?></label>

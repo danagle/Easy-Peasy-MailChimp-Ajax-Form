@@ -11,8 +11,10 @@ function epm_mailchimp_submit_to_list() {
 
 	//get data from our ajax() call
 	$epm_list_id = $_POST['epm_list_id'];
+	if(epm_get_option('display_name_fields')):
 	$epm_name = $_POST['epm_firstname'];
 	$epm_lastname = $_POST['epm_lastname'];
+	endif;
 	$epm_email = $_POST['epm_email'];
 	$epm_enable_validation = apply_filters( 'epm_filter_validation', 'enabled' ); //filter to disable/enable default validation messages
 	$epm_enable_success = apply_filters( 'epm_filter_success', 'enabled' ); //filter to disable/enable default success messages
@@ -21,7 +23,7 @@ function epm_mailchimp_submit_to_list() {
 	if($epm_enable_validation == 'enabled') {
 
 		// first name and last name not filled and name fields are enabled
-		if(empty($epm_name) && $epm_options['display_name_fields']) {
+		if(empty($epm_name) && epm_get_option('display_name_fields')) {
 			echo '<div class="epm-message epm-error message error"><p>'.__('Please fill in first name and last name fields.'.$epm_options['display_name_fields'],'easy-peasy-mailchimp').'</p></div>';
 		}
 		// email field is empty and is not an email
@@ -38,28 +40,28 @@ function epm_mailchimp_submit_to_list() {
 	//show success if enabled and form is correctly filled
 	if($epm_enable_success == 'enabled') {
 
-		if($epm_options['display_name_fields'] && !empty($epm_name) && !empty($epm_lastname) && !empty($epm_email) && is_email( $epm_email ) ) {
+		if(epm_get_option('display_name_fields') && !empty($epm_name) && !empty($epm_lastname) && !empty($epm_email) && is_email( $epm_email ) ) {
 			echo '<div class="epm-message epm-success message success"><p>'.__('Thank you for signing up to the newsletter.','easy-peasy-mailchimp').'</p></div>';
 		}
 
-		if(!$epm_options['display_name_fields'] && !empty($epm_email) && is_email( $epm_email )) {
+		if(!epm_get_option('display_name_fields') && !empty($epm_email) && is_email( $epm_email )) {
 			echo '<div class="epm-message epm-success message success"><p>'.__('Thank you for signing up to the newsletter.','easy-peasy-mailchimp').'</p></div>';
 		}
 
 	}
 
 	//proceed with submission to the mailchimp api
-	if($epm_options['display_name_fields'] && !empty($epm_name) && !empty($epm_lastname) && !empty($epm_email) && is_email( $epm_email ) || !$epm_options['display_name_fields'] && !empty($epm_email) && is_email( $epm_email ) ) {
+	if(epm_get_option('display_name_fields') && !empty($epm_name) && !empty($epm_lastname) && !empty($epm_email) && is_email( $epm_email ) || !epm_get_option('display_name_fields') && !empty($epm_email) && is_email( $epm_email ) ) {
 
 		$MailChimp = new \Drewm\MailChimp( $epm_options['mailchimp_api_key'] );
 		$result = $MailChimp->call('lists/subscribe', array(
 			'id'                => $epm_options['mailchimp_list_id'],
 			'email'             => array('email'=> $epm_email),
-			'merge_vars'        => ($epm_options['display_name_fields'] ? array('FNAME'=>$epm_name, 'LNAME'=>$epm_lastname) : array()),
-			'double_optin'      => ($epm_options['enable_double_optin'] ? true : false),
+			'merge_vars'        => (epm_get_option('display_name_fields') ? array('FNAME'=>$epm_name, 'LNAME'=>$epm_lastname) : array()),
+			'double_optin'      => (epm_get_option('enable_double_optin') ? true : false),
 			'update_existing'   => true,
 			'replace_interests' => false,
-			'send_welcome'      => ($epm_options['send_welcome_message'] ? true : false),
+			'send_welcome'      => (epm_get_option('send_welcome_message') ? true : false),
 		));
 
 	}

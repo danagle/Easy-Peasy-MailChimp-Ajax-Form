@@ -1,4 +1,3 @@
-
 <?php
 /*
 Plugin Name: Easy Peasy MailChimp Ajax Form
