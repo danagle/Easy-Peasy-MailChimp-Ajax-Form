@@ -1,10 +1,11 @@
+
 <?php
 /*
 Plugin Name: Easy Peasy MailChimp Ajax Form
 Plugin URI: http://themesdepot.org
 Description: Easy Peasy MailChimp allows you to easily include an ajax powered mailchimp newsletter signup form into your website through widget or shortcode.
 Author: Alessandro Tesoro
-Version: 1.0.4
+Version: 1.0.5
 Author URI: http://alessandrotesoro.me
 Requires at least: 3.8
 Tested up to: 4.0
@@ -47,7 +48,7 @@ class Easy_Peasy_MailChimp {
 	public function __construct() {
 		
 		// Define constants
-		define( 'EPM_VERSION', '1.0.0' );
+		define( 'EPM_VERSION', '1.0.5' );
 		define( 'EPM_SLUG', plugin_basename(__FILE__));
 		define( 'EPM_PLUGIN_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 		define( 'EPM_PLUGIN_URL', untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) );
