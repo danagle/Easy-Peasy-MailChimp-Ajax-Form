@@ -2,8 +2,8 @@
 Contributors: alessandro.tesoro
 Tags: email, mailchimp, marketing, newsletter, plugin, signup, MailChimp form, MailChimp Newsletter form, MailChimp plugin, ajax mailchimp, mailchimp ajax form
 Requires at least: 3.8
-Tested up to: 4.0
-Stable tag: 1.0.4
+Tested up to: 4.1
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,9 @@ add_filter('epm_filter_success', 'epm_disable_success_message');`
 1. Shortcode in a page
 
 == Changelog ==
+= 1.0.5 =
+* Fixed: php notices displaying when debug mode enabled.  
+
 = 1.0.4 =
 * Added: plugin will not activate if your web host is living in the stone age. Plugin requires PHP 5.3 or greater to work.  
 
