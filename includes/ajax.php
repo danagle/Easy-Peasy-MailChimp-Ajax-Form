@@ -94,10 +94,10 @@ jQuery(window).load(function() {
 
 		//get form values
 		var epm_form = jQuery(this);
-		var epm_list_id = jQuery(epm_form).parent().find('#epm_list_id').val();
-		var epm_firstname = jQuery(epm_form).parent().find('#epm-first-name').val();
-		var epm_lastname = jQuery(epm_form).parent().find('#epm-last-name').val();
-		var epm_email = jQuery(epm_form).parent().find('#epm-email').val();
+		var epm_list_id = jQuery(epm_form).parent().find("input[name='epm_list_id']").val();
+		var epm_firstname = jQuery(epm_form).parent().find("input[name='epm-first-name']").val();
+		var epm_lastname = jQuery(epm_form).parent().find("input[name='epm-last-name']").val();
+		var epm_email = jQuery(epm_form).parent().find("input[name='epm-email']").val();
 
 		//change submit button text
 		var submit_wait_text = jQuery(this).data('wait-text');
