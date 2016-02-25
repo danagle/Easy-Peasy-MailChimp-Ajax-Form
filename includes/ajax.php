@@ -81,6 +81,15 @@ add_action('wp_ajax_nopriv_epm_mailchimp_submit_to_list', 'epm_mailchimp_submit_
 function epm_mailchimp_footer_js() { ?>
 <script>
 jQuery(window).load(function() {
+	// multiple forms? give each a unique id and name
+	if (jQuery('form.epm-sign-up-form').length > 1) {
+		var epm_sign_up_form_id = 1;
+		jQuery('form.epm-sign-up-form').each(function() {
+			jQuery(this).attr('id', 'epm_sign_up_form_' + epm_sign_up_form_id );
+			jQuery(this).attr('name', 'epm_sign_up_form_' + epm_sign_up_form_id );
+			epm_sign_up_form_id++;
+		});
+	}
 	jQuery('.epm-submit-chimp').click(function() {
 
 		//get form values
