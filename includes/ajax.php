@@ -131,5 +131,8 @@ jQuery(window).load(function() {
 	});
 });
 </script>
-<?php }
-add_action('wp_footer','epm_mailchimp_footer_js');
+<?php
+  }
+  if ( !epm_get_option('enable_custom_javascript') ) {
+    add_action('wp_footer', 'epm_mailchimp_footer_js');
+  }

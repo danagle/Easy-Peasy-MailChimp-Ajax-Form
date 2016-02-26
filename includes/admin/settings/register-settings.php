@@ -125,7 +125,14 @@ function epm_get_registered_settings() {
 					'name' => __( 'Send Welcome Message?', 'epm' ),
 					'desc' => __( 'Check this box if you would like to send your welcome message. <br/><br/><strong>Note:</strong> if your double optin is disabled and this option is enabled, MailChimp will send your lists Welcome Email if this subscribe succeeds. <br/>A welcome email will not be sent in case of updating an existing subscriber. <br/>If Double optin is enabled, this option has no effect.', 'epm' ),
 					'type' => 'checkbox'
-				)
+				),
+				'enable_custom_javascript' => array(
+					'id' => 'enable_custom_javascript',
+					'name' => __( 'Use Custom JavaScript?', 'epm' ),
+					'desc' => __( 'Enable this option if you wish to use your own JavaScript code to process the AJAX form.', 'epm' ),
+					'type' => 'checkbox'
+				),
+
 			)
 		),
 		
